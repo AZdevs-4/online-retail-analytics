@@ -1,78 +1,80 @@
-# 📊 E-Commerce Retail Performance & Return Analytics Dashboard
+# Executive E-Commerce Analytics & Margin Leak Diagnostic
 
-An end-to-end data engineering, business intelligence, and analytical dashboard solution analyzing over 500,000 international retail transactions. This repository covers the complete project lifecycle from raw data transformation to DAX modeling and Power BI executive reporting.
-
----
-
-## 🖼️ Dashboard Preview
-
-![Executive Dashboard Overview](IMAGES/Dashboard_Preview1.png)
+[![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=power-bi&logoColor=black)](#)
+[![DAX](https://img.shields.io/badge/DAX-Data_Analysis_Expressions-blue?style=for-the-badge)](#)
+[![Power Query](https://img.shields.io/badge/Power_Query-ETL-green?style=for-the-badge)](#)
 
 ---
 
-## 📈 High-Level Performance Summary
+## 📌 Business Overview
 
-| Metric | Total Baseline | FY 2010 | FY 2011 | YoY Change |
-| :--- | :--- | :--- | :--- | :--- |
-| **Net Revenue** | **$9.76M** | $748.96K | $9.01M | **+1,103%** |
-| **Net Profit** | **$8.86M** | $674.17K | $8.19M | **+1,115%** |
-| **Confirmed Orders** | **6.00M** | 359.00K | 5.00M | **+1,292%** |
-| **Order Confirmation Rate** | **94.77%** | 95.33% | 94.74% | **-0.59 bps** |
-| **Product Return Rate** | **5.23%** | 4.67% | 5.26% | **+0.59 bps** |
-
-### ⚠️ Key Operational & Margin Leak Findings
-
-* 🚨 **January Post-Holiday Return Surge**: Uncovered a **22.24% return rate in January** (80,000 returned orders) following holiday fulfillment, compared to <3% during peak Q4 volume.
-* 📦 **Product SKU `23166` Anomaly**: Isolated over **140,000 returned units** for StockCode `23166` in January alone, identifying the single primary driver of Q1 margin erosion.
-* 🌍 **Regional Order Deficits**: Pinpointed localized negative net order spikes in key expansion markets, including Spain (-1.8K orders in Jan) and EIRE (-410.85 in Feb).
+Standard e-commerce reporting often focuses strictly on top-line gross sales, masking underlying net profit drains. This diagnostic engine was built in Microsoft Power BI to analyze over 500,000 transaction records, systematically tracking net retained revenue, return velocity, and operational profit leaks across international retail markets.
 
 ---
 
-## 🛠️ Project Workflow & Engineering
+## 🎯 Executive Strategy: The 80/20 Principle (Head & Tail Analysis)
 
-1. **Data Ingestion & Cleaning**: Split timestamps into discrete `Date` and `Time` fields, normalized customer identity attributes, and segregated sales orders from return transactions (`InvoiceNo` starting with 'C').
-2. **DAX Modeling**: Engineered measures for Gross Sales, Return Amounts, Net Revenue, Confirmation Rates, and Return Rates.
-3. **Power BI Visual Analytics**: Built an interactive multi-tab executive report analyzing monthly seasonal patterns, top international expansion markets, customer account revenue, and high-risk return SKUs.
+Rather than analyzing routine operational noise, this project isolates the vital 20% of data metrics driving 80% of total financial impact:
 
----
-
-## 📖 Deep-Dive Documentation
-
-* 🛠️ [Technical & Data Engineering Specifications](docs/TECHNICAL_DOCUMENTATION.md) — Pipeline details, Data Dictionary, and complete DAX catalog.
-* 📊 [Executive Business Report](docs/BUSINESS_EXECUTIVE_REPORT.md) — Business growth analysis, risk drivers, and operational recommendations.
+* **The Head (Top Profit Drivers):** High-LTV customer accounts and hero SKUs generating consistent net retained margin.
+* **The Tail (Defect & Profit Outliers):** Region-specific return surges, inventory misallocations, and single-SKU batch defect spikes.
 
 ---
 
-## 📁 Project Data Sources
+## 📊 Diagnostic Findings & Operational Case Studies
 
-Due to file size limits on GitHub, the full raw and cleaned datasets are hosted externally:
+### 1. Macro Seasonality & Post-Holiday Return Surges
+* **Q4 Holiday Peak:** December achieved peak performance with **$540.89K Net Sales** and **$522.05K Net Profit** across 291K confirmed orders, maintaining a healthy **2.80% return rate**.
+* **Post-Holiday Return Lag (EIRE Case Study):** 
+  * **January:** Strong initial net sales (**$35.68K**) with negligible returns (**0.03% return rate**, 4 orders).
+  * **February:** Net sales normalized to **$8.63K**, while return velocity surged dramatically to **14.42%** (676 returned orders).
+  * *Takeaway:* Return processing lags by ~30 days, causing post-holiday cash flow distortion if unmonitored.
 
-- 📥 **Raw Data**: [Download Raw Online Retail Dataset (Google Drive Link)](https://docs.google.com/spreadsheets/d/1DvroEffa7dkwypS2tkUutAffFKxPOUU1/edit?usp=drive_link&ouid=105196845709235591031&rtpof=true&sd=true)
-- 🧹 **Processed Data**: [Download Cleaned Retail Dataset (Google Drive Link)](https://docs.google.com/spreadsheets/d/1gUraYJVEg4TdmMzZ4nzXvZCe3i6N-kj3/edit?usp=drive_link&ouid=105196845709235591031&rtpof=true&sd=true)
-- 📊 **Dashboard File**: [Download Interactive Dashboard (Google Drive Link)](https://drive.google.com/file/d/1CnitOoJugxHpfysOvW9eevCfidPBCTrl/view?usp=drive_link)
+### 2. Regional Inventory Misallocation (SKU `M`)
+* **Finland:** SKU `M` operated as the **#1 performing product**, bringing in **$551.20** with zero returns.
+* **Spain:** SKU `M` inverted into a net loss driver (**-100 returned units**), pushing Spain into a monthly net loss of **-$606.85**.
+* *Takeaway:* Stock allocation in southern European nodes created unnecessary return shipping overhead, whereas shifting allocation to Nordic markets captures immediate, unfulfilled demand.
+
+### 3. Hero Performance vs. Defect Anomalies
+* **Hero Asset (SKU `22423`):** Consistently ranked as a top revenue driver across global markets (December Global #1 at $13.8K; EIRE top performer in Jan/Feb; Netherlands #2 in Feb; Australia #1 in Feb).
+* **Major Loss Drivers:**
+  * **Global Peak Leak (Dec):** SKU `20985` registered **1,500 returned units**, standing as the single largest peak-season margin leak.
+  * **Batch Defect Spikes (Feb):** EIRE and Australia exhibited standardized bulk return clusters (e.g., **-222 units** on SKU `22699` and repeated **-100 unit** return spikes across SKUs `22738` and `23079`), indicating supplier batch defects.
+
+### 4. Account Concentration Risk
+* **EIRE Revenue Concentration:** Account `14911` generated **$35,326.32** out of EIRE’s total **$35,680** net sales in January (**>98% revenue reliance**).
+* **Spain Deficit Source:** Two accounts (`12539` and `12540`) accounted for 100% of Spain’s **-$606.85** deficit.
+* **Netherlands Dependence:** Account `14646` generated **$25,978.09** of the region's total **$25.98K** sales in February.
 
 ---
 
-## 📁 Repository Structure
+## 💡 Strategic Business Recommendations
 
-```text
-online-retail-analytics/
-│
-├── 📁 data/
-│   ├── raw_online_retail.xlsx         # Source transactional logs
-│   └── processed_online_retail.xlsx    # Transformed staging dataset
-│
-├── 📁 dashboard/
-│   ├── Retail_Executive_Dashboard.pbix # Interactive Power BI report file
-│   └── 📁 screenshots/                 # High-resolution dashboard previews
-│       ├── executive_overview.png
-│       ├── regional_performance.png
-│       └── return_analysis.png
-│
-├── 📁 docs/
-│   ├── TECHNICAL_DOCUMENTATION.md      # ETL, Data Dictionary & DAX catalog
-│   └── BUSINESS_EXECUTIVE_REPORT.md    # Executive KPIs & strategic insights
-│
-├── .gitignore                          # Excludes temporary cache files
-├── LICENSE                             # MIT Open-Source License
-└── README.md                           # Main portfolio page
+| Priority Area | Tactical Action | Financial Impact |
+| :--- | :--- | :--- |
+| **Inventory Balancing** | Shift SKU `M` inventory allocations directly from Spain to Finland distribution nodes. | Eliminates localized return handling overhead while fulfilling high-intent Nordic demand. |
+| **Quality Control Audit** | Flag SKUs `20985` and `22699` for vendor specification and sizing audits. | Plugs Q4/Q1 return leaks caused by product defects or misleading listing details. |
+| **B2B Account Management** | Establish custom re-order limits and bulk return terms for key accounts (`14911`, `14646`). | Protects operational cash flows against single-buyer return shocks. |
+
+---
+
+## 🛠️ Technical Architecture & DAX Implementation
+
+* **Data Transformation (Power Query):** Processed datetime stamps into segregated Date/Time dimensions, isolated return transactions (`C` prefix invoice codes), and cleaned null customer identifiers.
+* **Data Modeling:** Implemented a star-schema architecture linking sales fact tables with Date, Customer, and Product dimensions.
+* **DAX Formulas (Sample Core Measures):**
+
+```dax
+// 1. Net Sales Engine
+Net Sales = 
+SUMX(
+    'Online_Retail',
+    'Online_Retail'[Quantity] * 'Online_Retail'[UnitPrice]
+)
+
+// 2. Dynamic Return Rate Percentage
+Return Rate % = 
+VAR TotalReturnedUnits = ABS(CALCULATE(SUM('Online_Retail'[Quantity]), 'Online_Retail'[Quantity] < 0))
+VAR TotalSoldUnits = CALCULATE(SUM('Online_Retail'[Quantity]), 'Online_Retail'[Quantity] > 0)
+RETURN
+DIVIDE(TotalReturnedUnits, TotalSoldUnits, 0)
