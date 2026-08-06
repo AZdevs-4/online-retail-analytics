@@ -20,6 +20,12 @@ An end-to-end data engineering, business intelligence, and analytical dashboard 
 | **Order Confirmation Rate** | **94.77%** | 95.33% | 94.74% | **-0.59 bps** |
 | **Product Return Rate** | **5.23%** | 4.67% | 5.26% | **+0.59 bps** |
 
+### ⚠️ Key Operational & Margin Leak Findings
+
+* 🚨 **January Post-Holiday Return Surge**: Uncovered a **22.24% return rate in January** (80,000 returned orders) following holiday fulfillment, compared to <3% during peak Q4 volume.
+* 📦 **Product SKU `23166` Anomaly**: Isolated over **140,000 returned units** for StockCode `23166` in January alone, identifying the single primary driver of Q1 margin erosion.
+* 🌍 **Regional Order Deficits**: Pinpointed localized negative net order spikes in key expansion markets, including Spain (-1.8K orders in Jan) and EIRE (-410.85 in Feb).
+
 ---
 
 ## 🛠️ Project Workflow & Engineering
@@ -36,7 +42,8 @@ An end-to-end data engineering, business intelligence, and analytical dashboard 
 * 📊 [Executive Business Report](docs/BUSINESS_EXECUTIVE_REPORT.md) — Business growth analysis, risk drivers, and operational recommendations.
 
 ---
-# 📁 Project Data Sources
+
+## 📁 Project Data Sources
 
 Due to file size limits on GitHub, the full raw and cleaned datasets are hosted externally:
 
@@ -45,13 +52,14 @@ Due to file size limits on GitHub, the full raw and cleaned datasets are hosted 
 - 📊 **Dashboard File**: [Download Interactive Dashboard (Google Drive Link)](https://drive.google.com/file/d/1CnitOoJugxHpfysOvW9eevCfidPBCTrl/view?usp=drive_link)
 
 ---
+
 ## 📁 Repository Structure
 
 ```text
 online-retail-analytics/
 │
 ├── 📁 data/
-│   ├── raw_online_retail.xlsx          # Source transactional logs
+│   ├── raw_online_retail.xlsx         # Source transactional logs
 │   └── processed_online_retail.xlsx    # Transformed staging dataset
 │
 ├── 📁 dashboard/
