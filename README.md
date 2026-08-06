@@ -6,7 +6,7 @@ An end-to-end data engineering, business intelligence, and analytical dashboard 
 
 ## 🖼️ Dashboard Preview
 
-![Executive Dashboard Overview](dashboard/screenshots/executive_overview.png)
+![Executive Dashboard Overview]([dashboard/screenshots/executive_overview.png](https://github.com/AZdevs-4/online-retail-analytics/tree/main/IMAGES))
 
 ---
 
