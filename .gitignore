@@ -1,5 +1,13 @@
+# Exclude temporary Excel lock files (created when an Excel spreadsheet is open)
 ~$*.xlsx
 ~$*.xlsb
-*.tmp
+~$*.xls
+~$*.csv
+
+# Exclude temporary Power BI auto-recovery and cache files
 *.pbix.auto
+*.tmp
+
+# Exclude Operating System junk files
 .DS_Store
+Thumbs.db
