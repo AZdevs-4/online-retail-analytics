@@ -21,42 +21,29 @@ Rather than analyzing routine operational noise, this project isolates the vital
 
 ---
 
-## 📊 Diagnostic Findings & Operational Case Studies
+## 📊 Executive Case Study: Diagnostic E-Commerce Analytics
 
-### 1. Macro Seasonality & Post-Holiday Return Surges
-* **Q4 Holiday Peak:** December achieved peak performance with **$540.89K Net Sales** and **$522.05K Net Profit** across 291K confirmed orders, maintaining a healthy **2.80% return rate**.
-* **Post-Holiday Return Lag (EIRE Case Study):** 
-  * **January:** Strong initial net sales (**$35.68K**) with negligible returns (**0.03% return rate**, 4 orders).
-  * **February:** Net sales normalized to **$8.63K**, while return velocity surged dramatically to **14.42%** (676 returned orders).
-  * *Takeaway:* Return processing lags by ~30 days, causing post-holiday cash flow distortion if unmonitored.
+### 1. Macro Volatility & Post-Holiday Return Lag
+* **December Peak:** Analyzed 291K confirmed orders totaling **$540.89K Net Sales** and **$522.05K Net Profit**, maintaining a healthy **2.80% return rate**.
+* **Lagged Return Surge (EIRE Market):** 
+  * January recorded **$35.68K Net Sales** with a near-zero **0.03% return rate** (4 return orders).
+  * February experienced a severe return velocity spike to **14.42%** (676 return orders), demonstrating a 30-day delayed return wave from peak holiday delivery cycles.
 
-### 2. Regional Inventory Misallocation (SKU `M`)
-* **Finland:** SKU `M` operated as the **#1 performing product**, bringing in **$551.20** with zero returns.
-* **Spain:** SKU `M` inverted into a net loss driver (**-100 returned units**), pushing Spain into a monthly net loss of **-$606.85**.
-* *Takeaway:* Stock allocation in southern European nodes created unnecessary return shipping overhead, whereas shifting allocation to Nordic markets captures immediate, unfulfilled demand.
+### 2. Regional Demand & Stock Arbitrage
+* **SKU `M` Misallocation (Finland vs. Spain - Jan):**
+  * **Finland:** Ranked as the **#1 top product** generating **$551.20** in net value with zero returns.
+  * **Spain:** Inverted into the top returned product (**-100 units**), driving Spain into a **-$606.85 Net Profit deficit**.
+* **Global Revenue Anchor (SKU `22423`):** Consistently ranked as a top revenue driver across multiple international markets (December Global #1 at $13.8K, EIRE #1/#2, Netherlands #2, Australia #1).
 
-### 3. Hero Performance vs. Defect Anomalies
-* **Hero Asset (SKU `22423`):** Consistently ranked as a top revenue driver across global markets (December Global #1 at $13.8K; EIRE top performer in Jan/Feb; Netherlands #2 in Feb; Australia #1 in Feb).
-* **Major Loss Drivers:**
-  * **Global Peak Leak (Dec):** SKU `20985` registered **1,500 returned units**, standing as the single largest peak-season margin leak.
-  * **Batch Defect Spikes (Feb):** EIRE and Australia exhibited standardized bulk return clusters (e.g., **-222 units** on SKU `22699` and repeated **-100 unit** return spikes across SKUs `22738` and `23079`), indicating supplier batch defects.
+### 3. High-Impact Margin Leaks & Defect Diagnostics
+* **Top Dollar-Value Leak (December):** SKU `20985` generated **$1,500 in returned product value** during peak season, serving as the single largest margin drain.
+* **Batch Defect Anomalies (February):** SKU `22699` spiked in EIRE with **-222 returned units**, alongside standardized **-100 unit return clusters** across 8 additional SKUs, signaling supplier production/packaging issues.
+* **Customer Account Concentration:** 100% of Spain's January loss (-$606.85) originated from just two B2B customer accounts (`12539` and `12540`).
 
-### 4. Account Concentration Risk
-* **EIRE Revenue Concentration:** Account `14911` generated **$35,326.32** out of EIRE’s total **$35,680** net sales in January (**>98% revenue reliance**).
-* **Spain Deficit Source:** Two accounts (`12539` and `12540`) accounted for 100% of Spain’s **-$606.85** deficit.
-* **Netherlands Dependence:** Account `14646` generated **$25,978.09** of the region's total **$25.98K** sales in February.
-
----
-
-## 💡 Strategic Business Recommendations
-
-| Priority Area | Tactical Action | Financial Impact |
-| :--- | :--- | :--- |
-| **Inventory Balancing** | Shift SKU `M` inventory allocations directly from Spain to Finland distribution nodes. | Eliminates localized return handling overhead while fulfilling high-intent Nordic demand. |
-| **Quality Control Audit** | Flag SKUs `20985` and `22699` for vendor specification and sizing audits. | Plugs Q4/Q1 return leaks caused by product defects or misleading listing details. |
-| **B2B Account Management** | Establish custom re-order limits and bulk return terms for key accounts (`14911`, `14646`). | Protects operational cash flows against single-buyer return shocks. |
-
----
+### 🛠️ Strategic Recommendations
+1. **Inventory Reallocation:** Shift inventory of SKU `M` away from low-converting southern European nodes directly to high-intent Nordic markets (Finland).
+2. **Vendor Quality Audits:** Initiate supplier reviews for SKUs `20985` and `22699` to audit sizing accuracy and material quality.
+3. **Credit Risk Controls:** Implement tiered return thresholds on high-concentration B2B accounts to mitigate single-client cash flow shocks.
 
 ## 🛠️ Technical Architecture & DAX Implementation
 
